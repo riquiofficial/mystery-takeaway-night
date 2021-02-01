@@ -1,11 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 import table from "../images/table.jpg";
+import table2 from "../images/table2.jpg";
 
 const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  h1 {
+    margin-bottom: 2rem;
   }
 
   h2 {
@@ -14,7 +18,13 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Special Elite', cursive;
-    background: table;
+    height: 100vh;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7) ),url(${table2});
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    color: #d8d8d8;
   }
   .content {
     position: absolute;
