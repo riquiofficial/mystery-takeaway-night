@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyles from "./components/GlobalStyles";
+import { useState } from "react";
 
 function App() {
+  const [info, setInfo] = useState({
+    host: "",
+    households: 0,
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyles></GlobalStyles>
+      <div className="content">
+        <h1>Mystery Takeaway Night</h1>
+        <h2>Please enter your options:</h2>
+        <form action="">
+          <label htmlFor="name">What is your name?</label>
+          <input name="name" type="text" /> <br />
+          <label htmlFor="Households">
+            How many households will be participating?
+          </label>
+          <input name="households" type="number" />
+          <br />
+          <input class="btn" type="submit" />
+        </form>
+      </div>
     </div>
   );
 }
