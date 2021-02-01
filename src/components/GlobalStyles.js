@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import table from "../images/table.jpg";
 import table2 from "../images/table2.jpg";
 
 const GlobalStyles = createGlobalStyle`
@@ -40,9 +39,11 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 1rem 1rem 0;
     width: 5rem;
     height: 2rem;
+    border-radius: 3px;
+    border: none;
   }
   .btn {
-    border-radius: 8px;
+    border-radius: 3px;
     box-shadow: 2px 2px 5px #000;
     border: none;
     background-color: orangered;
