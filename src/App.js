@@ -1,28 +1,28 @@
 import GlobalStyles from "./components/GlobalStyles";
 import { useState } from "react";
 
-function App() {
-  const [info, setInfo] = useState({
-    host: "",
-    households: 0,
-  });
+const food = ["Chinese", "Indian", "Fish and chips", "American", "Italian"]
+const pickFood = () => food[Math.floor(Math.random()*food.length)]
 
+function App() {
+    const [people, setPeople] = useState([])
+
+    console.log(people)
   return (
     <div className="App">
       <GlobalStyles></GlobalStyles>
       <div className="content">
         <h1>Mystery Takeaway Night</h1>
-        <h2>Please enter your options:</h2>
-        <form action="">
-          <label htmlFor="name">What is your name?</label>
+        <h2>Add Person: </h2>
+        <div>
+          <label htmlFor="name">Name</label>
           <input name="name" type="text" /> <br />
-          <label htmlFor="Households">
-            How many households will be participating?
-          </label>
-          <input name="households" type="number" />
           <br />
-          <input class="btn" type="submit" />
-        </form>
+          <input className="btn" type="submit" onClick={() => setPeople([...people, document.getElementsByName("name")[0].value])} />
+        </div>
+        <div className="names">
+          {people ? people.map(person => <div>{person}: {pickFood()}</div>) : null}
+        </div>
       </div>
     </div>
   );

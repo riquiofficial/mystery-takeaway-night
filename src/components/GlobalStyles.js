@@ -60,6 +60,11 @@ const GlobalStyles = createGlobalStyle`
     }
     
   }
+
+  .names {
+    display: flex;
+    flex-direction: column;
+  }
  
 `;
 
