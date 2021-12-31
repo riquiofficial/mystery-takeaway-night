@@ -52,6 +52,18 @@ const GlobalStyles = createGlobalStyle`
       transform:translateY(-2px);
     }
   }
+  
+  @media screen and (max-width: 400px) {
+    .content {
+      margin: 0;
+    }
+    
+  }
+
+  .names {
+    display: flex;
+    flex-direction: column;
+  }
  
 `;
 
