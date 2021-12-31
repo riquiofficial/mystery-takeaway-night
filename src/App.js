@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <GlobalStyles></GlobalStyles>
       <div className="content">
-        <h1>Mystery Takeaway Night</h1>
+        <h1>Mystery Takeaway Night (Under construction!)</h1>
         <h2>Please enter your options:</h2>
         <form action="">
           <label htmlFor="name">What is your name?</label>

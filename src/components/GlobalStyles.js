@@ -30,7 +30,6 @@ const GlobalStyles = createGlobalStyle`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin: 10px;
   }
   label {
     margin: 0 1rem 1rem 0;
@@ -52,13 +51,6 @@ const GlobalStyles = createGlobalStyle`
     &:hover {
       transform:translateY(-2px);
     }
-  }
-  
-  @media screen and (max-width: 400px) {
-    .content {
-      margin: 0;
-    }
-    
   }
  
 `;
