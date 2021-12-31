@@ -16,22 +16,23 @@ function App() {
     }
 
     const pickMysteryPeople = () => {
-      // for (let person in people) {
-      //   if (people[Math.floor(Math.random()*food.length)] !== people[person]) {
-      //     people[person].mysteryPerson = people[Math.floor(Math.random()*food.length)].person
-      //   }
-      // }
-      
-      people.forEach(person => {
+      // people has to be even
+      if (people.length % 2 !== 0) {
+        alert("please enter at least one name and an even number of people")
+        return
+      }
+
+      people.forEach((person) => {
         const pickPerson = () => {
           const mysteryPerson = people[Math.floor(Math.random()*people.length)]
-          if (mysteryPerson !== person && mysteryPerson.mysteryPerson === "") {
+          if (mysteryPerson !== person && person.mysteryPerson === "") {
             return mysteryPerson
           } else {
             pickPerson()
           }
         }
         setPeople([...people, person.mysteryPerson = pickPerson()])
+        console.log(people)
       })
     }
 
@@ -45,9 +46,15 @@ function App() {
           <label htmlFor="name">Name</label>
           <input name="name" type="text" /> <br />
           <br />
-          <input className="btn" type="submit" onClick={!showFood ? addPerson : () => alert("please refresh to start a new mystery...")} />
-          <button className="btn" onClick={people.length ? () => setShowFood(true) : () => alert("please enter at least one name")} >Pick Food Type!</button>
-          <button className="btn" onClick={people.length % 2 === 0 ? () => pickMysteryPeople() : () => alert("please enter at least one name and an even number of people")} >Pick Mystery Person!</button>
+          {!showFood ? 
+            <div>
+              <input className="btn" type="submit" onClick={addPerson}/>
+              <button className="btn" onClick={people.length ? () => setShowFood(true) : () => alert("please enter at least one name")} >Pick Food Type!</button>
+            </div>
+            : null} 
+          
+          
+          <button className="btn" onClick={pickMysteryPeople} >Pick Mystery Person!</button>
 
         </div>
         <div className="names">
