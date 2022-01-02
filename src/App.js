@@ -54,8 +54,8 @@ function App() {
         }
       };
       person.mysteryPerson = pickPerson();
+      setPeople([...people]);
     });
-    setPeople([...people]);
   };
 
   return (
@@ -66,7 +66,17 @@ function App() {
         <h2>Add Person: </h2>
         <div>
           <label htmlFor="name">Name</label>
-          <input name="name" type="text" /> <br />
+          <input
+            name="name"
+            type="text"
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                addPerson();
+                document.getElementsByName("name")[0].value = "";
+              }
+            }}
+          />{" "}
+          <br />
           <br />
           {!showFood ? (
             <div>
