@@ -38,15 +38,15 @@ function App() {
       return;
     }
 
-    let picked = [];
+    let picked = [...people];
     people.forEach((person) => {
       const pickPerson = () => {
         // pick person at random
-        const randomPerson = people[Math.floor(Math.random() * people.length)];
+        const randomPerson = picked[Math.floor(Math.random() * picked.length)];
         // if random person not current person and not already been picked, pick them
         // otherwise use recursion to select another
-        if (randomPerson !== person && !picked.includes(randomPerson)) {
-          picked.push(randomPerson);
+        if (randomPerson !== person) {
+          picked.splice(randomPerson.key, 1);
           return randomPerson;
         } else {
           console.log("repicking");
