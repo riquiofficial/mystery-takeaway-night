@@ -38,18 +38,24 @@ function App() {
       return;
     }
 
+    let picked = [];
     people.forEach((person) => {
       const pickPerson = () => {
-        const mysteryPerson = people[Math.floor(Math.random() * people.length)];
-        if (mysteryPerson !== person && person.mysteryPerson === "") {
-          return mysteryPerson;
+        // pick person at random
+        const randomPerson = people[Math.floor(Math.random() * people.length)];
+        // if random person not current person and not already been picked, pick them
+        // otherwise use recursion to select another
+        if (randomPerson !== person && !picked.includes(randomPerson)) {
+          picked.push(randomPerson);
+          return randomPerson;
         } else {
-          pickPerson();
+          console.log("repicking");
+          return pickPerson();
         }
       };
-      setPeople([...people, (person.mysteryPerson = pickPerson())]);
-      console.log(people);
+      person.mysteryPerson = pickPerson();
     });
+    setPeople([...people]);
   };
 
   return (
@@ -64,7 +70,14 @@ function App() {
           <br />
           {!showFood ? (
             <div>
-              <input className="btn" type="submit" onClick={addPerson} />
+              <input
+                className="btn"
+                type="submit"
+                onClick={() => {
+                  addPerson();
+                  document.getElementsByName("name")[0].value = "";
+                }}
+              />
               <button
                 className="btn"
                 onClick={
@@ -77,14 +90,16 @@ function App() {
               </button>
             </div>
           ) : null}
-          <button className="btn" onClick={pickMysteryPeople}>
-            Pick Mystery Person!
-          </button>
+          {people[0]?.mysteryPerson === "" && people.length % 2 === 0 ? (
+            <button className="btn" onClick={pickMysteryPeople}>
+              Pick Mystery Person!
+            </button>
+          ) : null}
         </div>
         <div className="names">
           {people
-            ? people.map((person) => (
-                <div>
+            ? people.map((person, index) => (
+                <div key={index}>
                   {person.person}
                   {showFood ? `: ${person.food}` : null}
                   {person.mysteryPerson
