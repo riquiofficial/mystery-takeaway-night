@@ -64,22 +64,24 @@ function App() {
       <GlobalStyles></GlobalStyles>
       <div className="content">
         <h1>Mystery Takeaway Night</h1>
-        <h2>Add Person: </h2>
         <div>
-          <label htmlFor="name">Name</label>
-          <input
-            name="name"
-            type="text"
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                addPerson();
-                document.getElementsByName("name")[0].value = "";
-              }
-            }}
-          />{" "}
-          <br />
-          <br />
-          {!showFood ? (
+        {!showFood ? 
+          (
+          <div>
+            <h2>Add Person: </h2>
+            <label htmlFor="name">Name</label>
+            <input
+              name="name"
+              type="text"
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  addPerson();
+                  document.getElementsByName("name")[0].value = "";
+                }
+              }}
+            />
+            <br />
+            <br />
             <div>
               <input
                 className="btn"
@@ -100,7 +102,8 @@ function App() {
                 Pick Food Type!
               </button>
             </div>
-          ) : null}
+            </div>
+          ) : <a href="/"><button className="btn">Restart</button></a>}
           {people[0]?.mysteryPerson === "" && people.length % 2 === 0 ? (
             <button className="btn" onClick={pickMysteryPeople}>
               Pick Mystery Person!
