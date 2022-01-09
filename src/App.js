@@ -1,5 +1,6 @@
 import GlobalStyles from "./components/GlobalStyles";
 import { useState } from "react";
+import Swal from 'sweetalert2'
 
 const food = [
   "Chinese",
@@ -34,7 +35,7 @@ function App() {
   const pickMysteryPeople = () => {
     // people has to be even
     if (people.length % 2 !== 0) {
-      alert("please enter at least one name and an even number of people");
+      Swal.fire({title: "Something's Missing...", text:"please enter at least one name and an even number of people"});
       return;
     }
 
@@ -93,7 +94,7 @@ function App() {
                 onClick={
                   people.length
                     ? () => setShowFood(true)
-                    : () => alert("please enter at least one name")
+                    : () => Swal.fire({title: "Something's Missing...", text:"please enter at least one name", icon: "error"})
                 }
               >
                 Pick Food Type!
@@ -109,7 +110,7 @@ function App() {
         <div className="names">
           {people
             ? people.map((person, index) => (
-                <div key={index}>
+                <div key={index} className="name">
                   {person.person}
                   {showFood ? `: ${person.food}` : null}
                   {person.mysteryPerson

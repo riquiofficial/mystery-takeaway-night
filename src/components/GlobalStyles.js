@@ -48,6 +48,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: orangered;
     color: white;
     transition: all .3s ease-out;
+    cursor: pointer;
     &:hover {
       transform:translateY(-2px);
     }
@@ -63,6 +64,25 @@ const GlobalStyles = createGlobalStyle`
   .names {
     display: flex;
     flex-direction: column;
+  }
+
+  .name {
+    margin: 0.5rem;
+  }
+
+  button {
+    padding: 8.5px;
+    margin: 5px;
+    animate: fade ease-out .5s;
+  }
+
+  @keyframe fade {
+    from {
+      opacity: 0
+    }
+    to {
+      opacity: 1
+    }
   }
  
 `;
