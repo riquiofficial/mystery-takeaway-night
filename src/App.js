@@ -91,6 +91,7 @@ function App() {
                   document.getElementsByName("name")[0].value = "";
                 }}
               />
+              {people.length ?
               <button
                 className="btn"
                 onClick={
@@ -100,7 +101,7 @@ function App() {
                 }
               >
                 Pick Food Type!
-              </button>
+              </button> : null}
             </div>
             </div>
           ) : <a href="/"><button className="btn">Restart</button></a>}
